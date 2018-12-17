@@ -1,7 +1,7 @@
 {
-  "name": "node_template_api",
+  "name": "report-backend",
   "version": "1.0.0",
-  "description": "Template for building a node api",
+  "description": "CRUD api for reporting",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
