@@ -1,22 +1,20 @@
 {
-  "name": "backend",
+  "name": "node_template_api",
   "version": "1.0.0",
-  "description": "Backend for web and mobile",
+  "description": "Template for building a node api",
   "main": "index.js",
   "scripts": {
+    "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/DGGomez/Reporting-App.git"
-  },
-  "keywords": [
-    "Reporting"
-  ],
-  "author": "Daniel Gomez",
+  "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/DGGomez/Reporting-App/issues"
-  },
-  "homepage": "https://github.com/DGGomez/Reporting-App#readme"
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "cors": "^2.8.4",
+    "express": "^4.16.3",
+    "morgan": "^1.9.1",
+    "mysql": "^2.16.0",
+    "path": "^0.12.7"
+  }
 }
