@@ -9,9 +9,6 @@ Web App:
 
 - front end: 
     - react:
-        - Pages:
-            - Main window for reading reports based on area ( input area )
-
         - Functionality:
             - Middleware
             - Reducers
