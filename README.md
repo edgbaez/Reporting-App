@@ -11,7 +11,6 @@ Web App:
     - react:
         - Pages:
             - Main window for reading reports based on area ( input area )
-            - Add a report form ( What happened? Where did it happen? Description? )
 
         - Functionality:
             - Middleware
