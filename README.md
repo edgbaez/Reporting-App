@@ -8,13 +8,16 @@ USE CASES:
 Web App:
 
 - front end: 
+    - components
+        - header
+        - footer
+        
     - react:
         - Functionality:
             - Middleware
             - Reducers
             - Action listener
             - Store
-            - Router
             - Test cases ( creating, updating, archive, reading )
 
 - back end:
