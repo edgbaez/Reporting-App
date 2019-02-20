@@ -9,16 +9,11 @@ Web App:
 
 - front end: 
     - components
-        - header
-        - footer
         - fix card
         
     - react:
         - Functionality:
             - Middleware
-            - Reducers
-            - Action listener
-            - Store
             - Test cases ( creating, updating, archive, reading )
 
 - back end:
