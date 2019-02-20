@@ -1,8 +1,8 @@
 import axios from 'axios';
 
-export const createData = ({userId}, callback) => async (dispatch) =>{
+export const createData = (title, location, description, callback) => async () =>{
     try{
-        const res = await axios.post(`/create/${userId}`);
+        const res = await axios.post('/create', {title,location,description});
         callback();
     }
     catch(err){
@@ -10,7 +10,7 @@ export const createData = ({userId}, callback) => async (dispatch) =>{
     }
 };
 
-export const readAllData = (callback) => async (dispatch) =>{
+export const readAllData = (callback) => async () =>{
     try{
         const res = await axios.get(`/readAll`);
         callback();
@@ -20,9 +20,9 @@ export const readAllData = (callback) => async (dispatch) =>{
     }
 };
 
-export const readData = ({userId},callback) => async (dispatch) =>{
+export const readData = (location, callback) => async () =>{
     try{
-        const res = await axios.get(`/read/${userId}`);
+        const res = await axios.get(`/read/${location}`);
         callback();
     }
     catch(err){
@@ -30,10 +30,9 @@ export const readData = ({userId},callback) => async (dispatch) =>{
     }
 };
 
-export const updateData = ({userId},callback) => async (dispatch) =>{
+export const updateData = (reportId,title,location,description,callback) => async () =>{
     try{
-        const res = await axios.put(`/update/${userId}`);
-        //dispatch({ type: FETCH_USER, payload: res.data });
+        const res = await axios.put(`/update/${reportId}`, {title,location,description});
         callback();
     }
     catch(err){
@@ -41,9 +40,9 @@ export const updateData = ({userId},callback) => async (dispatch) =>{
     }
 };
 
-export const deleteData = ({userId}, callback) => async (dispatch) =>{
+export const deleteData = ({reportId}, callback) => async () =>{
     try{
-        const res = await axios.delete(`/delete/${userId}`);
+        const res = await axios.delete(`/delete/${reportId}`);
         callback();
     }
     catch(err){
