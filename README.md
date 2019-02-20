@@ -11,6 +11,7 @@ Web App:
     - components
         - header
         - footer
+        - fix card
         
     - react:
         - Functionality:
