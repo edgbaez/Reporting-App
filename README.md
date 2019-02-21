@@ -93,3 +93,10 @@ AI/Scan:
         - Sort situations based on similarities ( how close will these situations be? e.g. 75% similar )
         - Contact Police if extreme / fill out report with police ( have change ticket system of person checking the situation ) (prevents DDOS)
         - Chron job (how often should this be run? Once a week or Daily?)
+    - tasks
+        - move data
+        - archive data
+        - interpret data
+        - chunk data
+        - delete data
+        - sort by location and by importance 
