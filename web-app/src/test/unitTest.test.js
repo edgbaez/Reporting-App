@@ -36,3 +36,13 @@ describe("Testing components rendering", function(){
   }); 
     
 }
+     
+describe("Testing actions rendering", function(){
+
+  it('report submition', () => {
+  });
+
+  it('report reading', () => {
+  });
+    
+}
