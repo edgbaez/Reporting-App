@@ -7,6 +7,8 @@ import Card from '../components/Card.js';
 import Footer from '../components/Footer.js';
 import NavBar from '../components/NavBar.js';
 
+import {createData , readAllData, readData, updateData, deleteData} from "../actions";
+
 import {shallow} from 'enzyme';
 
 describe("Testing page rendering", function(){
