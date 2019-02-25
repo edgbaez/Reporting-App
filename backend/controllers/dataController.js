@@ -3,7 +3,7 @@ var connectionInfo = require('../db/db.js');
 var connection = mysql.createConnection(connectionInfo);
 
 exports.list_all = function(req, res) {
-  connection.query(req, function(err,result){
+  connection.query('SELECT * FROM events;', function(err,result){
     if(err) throw err;
     
     return result;
@@ -11,7 +11,7 @@ exports.list_all = function(req, res) {
 };
 
 exports.create = function(req, res) {
-   connection.query(req, function(err,result){
+   connection.query(`INSERT INTO events (title, location, description) VALUES ($req.title, $req.location, $req.description);`, function(err,result){
     if(err) throw err;
     
     return "Success";
@@ -19,7 +19,7 @@ exports.create = function(req, res) {
 };
 
 exports.read = function(req, res) {
-   connection.query(req, function(err,result){
+   connection.query(`Select * FROM events WHERE location=$req.location`, function(err,result){
     if(err) throw err;
     
     return result;
@@ -27,7 +27,7 @@ exports.read = function(req, res) {
 };
 
 exports.update = function(req, res) {
-   connection.query(req, function(err,result){
+   connection.query(`UPDATE events SET location=$req.location, description=$req.description WHERE title=$req.title;`, function(err,result){
     if(err) throw err;
     
     return "Success";
@@ -35,7 +35,7 @@ exports.update = function(req, res) {
 };
 
 exports.delete = function(req, res) {
-    connection.query(req, function(err,result){
+    connection.query(`DELETE FROM events WHERE title=$req.title;`, function(err,result){
     if(err) throw err;
     
     return "Success";
