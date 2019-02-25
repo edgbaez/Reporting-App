@@ -8,14 +8,13 @@ USE CASES:
 - create TDD test cases for all sections
 
 Web App:
-
+(go through logic of front end)
 - front end: 
     - components
         - fix card
         
     - react:
         - Functionality:
-            - Middleware
             - Test cases ( creating, updating, archive, reading )
 
 - back end:
