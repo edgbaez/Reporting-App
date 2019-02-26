@@ -19,28 +19,20 @@ Web App:
 
 - back end:
     - node js:
-        - Endpoints:
-            - create a report (post)
-            - update a report (post)
-            - archive a report (post)
-            - read a report (get)
-        
+
         - database:
-            - Mysql or Mongo ( pref Mysql to connect addresses )
             - 3 instances of dbs ( main, backup, old )
 
             - model:
                 - Tables:
                     - Reports:
-                        - Id #
-                        - situation
+                        - title
                         - location
-                        - description of assailant 
+                        - description
                     - Archived: ( situations that are 6 months old without new updates/new reports will be moved to lower priority db)
-                        - Id #
-                        - situation
+                        - title
                         - location
-                        - description of assailant
+                        - description
 
 Mobile App
 
