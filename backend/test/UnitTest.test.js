@@ -1,63 +1,48 @@
 import nock from 'nock';
 import { expect, request } from 'chai';
 
-import api from '../../src/server';
-import Article from '../../src/models/article';
-import config from '../../src/config';
-import { dropDBs, loadFixture, withLogin } from '../utils.js';
+import api from '../app';
 
 describe('Article controller', () => {
 	let article;
 
 	before(async () => {
-		await dropDBs();
-		await loadFixture('initial-data', 'articles');
-		article = await Article.findOne({});
-		expect(article).to.not.be.null;
-		expect(article.rss).to.not.be.null;
+
 	});
 
-	describe('get', () => {
-		it('should return the right article via /articles/:articleId', async () => {
-			let response = await withLogin(request(api).get(`/articles/${article.id}`));
+	describe('post', () => {
+		it('should return the right ', async () => {
+			let response = await request(api).post(`/create`, {"test","test","test"});
 			expect(response).to.have.status(200);
 		});
 	});
 
-	describe('get parsed article', () => {
-		it('should return the parsed version of the article', async () => {
-			const response = await withLogin(
-				request(api).get(`/articles/${article.id}`).query({ type: 'parsed' })
-			);
+	describe('get all', () => {
+		it('should return all values', async () => {
+			const response = request(api).get(`/readAll`);
+			
 			expect(response).to.have.status(200);
 		});
 	});
 
-	describe('list', () => {
-		it('should return the list of articles', async () => {
-			let response = await withLogin(request(api).get('/articles'));
+	describe('update', () => {
+		it('should update data', async () => {
+			let response = request(api).get('/read',{title:"test", location: "test1", description:"test1"});
 			expect(response).to.have.status(200);
 		});
 	});
 
-	describe('list from personalization', () => {
-		after(function () {
-			nock.cleanAll();
-		});
-
-		it('should return the list of articles', async () => {
-			nock(config.stream.baseUrl)
-				.get(/winds_article_recommendations/)
-				.reply(200, { results: [{foreign_id:`article:${article.id}`}] });
-
-			const response = await withLogin(
-				request(api).get('/articles').query({
-					type: 'recommended',
-				})
-			);
+	describe('read by location', () => {
+		it('should return the list by location', async () => {
+			let response = request(api).get('/read',{location: "test1"});
 			expect(response).to.have.status(200);
-			expect(response.body.length).to.be.at.least(1);
-			expect(response.body[0].url).to.eq(article.url);
+		});
+	});
+	
+	describe('delete', () => {
+		it('delete test', async () => {
+			let response = request(api).get('/delete',{title: "test"});
+			expect(response).to.have.status(200);
 		});
 	});
 });
