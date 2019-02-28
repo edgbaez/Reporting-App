@@ -3,7 +3,22 @@ Reporting App
 description:
     - An online and mobile app to report low priority incidents where nothing happened but potentially could have happened/ something happened and you don't want to tell the police. This will organize data and sort it by severity of the situation. The incidents will be reported anonymously and will be clumped together for similar cases. Cases of extreme nature will be passed to police. 
 
+Front-end web: react
+Front-end mobile: react native
+Back-end: Node.js
+Code-Check: Node.js (maybe replaced by python)
+
+Front-end: Accepts events through forms and sends them to back-end. It will also show all events that have happened or sort through events by location.
+
+Back-end: Saves events to mysql db and reads db.
+
+Code-Check: Sorts through db for events that are similar to each other in order to bring more awareness to a common occurance. 
+
 USE CASES:
+
+- where to host?
+- pipelines?
+- how much will this cost?
 
 - create TDD test cases for all sections
 
