@@ -22,6 +22,8 @@ USE CASES:
 
 - create TDD test cases for all sections
 
+DB Scheme:
+
 Web App:
 (go through logic of front end)
 - front end: 
