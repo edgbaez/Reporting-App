@@ -2,9 +2,9 @@
   "name": "code-check",
   "version": "1.0.0",
   "description": "searches through code for priority messages",
-  "main": "index.js",
+  "main": "main.js",
   "scripts": {
-    "start": "node index.js",
+    "start": "node main.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
