@@ -2,7 +2,7 @@ CREATE TABLE IF NOT EXISTS tasks (
     title VARCHAR(255) NOT NULL,
     date_posted DATE,
     priority TINYINT,
-    description TEXT,
+    description TEXT NOT NULL,
     location VARCHAR(100) NOT NULL,
     PRIMARY KEY (title)
 );
