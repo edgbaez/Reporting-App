@@ -1,5 +1,5 @@
 var connectionInfo = require('../db/db.js');
-
+var mysql      = require('mysql');
 var connection = mysql.createConnection(connectionInfo);
 
 exports.list_all = function(req, res) {
@@ -7,7 +7,7 @@ exports.list_all = function(req, res) {
     if(err) throw err;
     
     return result;
-  }
+  });
 };
 
 exports.create = function(req, res) {
@@ -15,7 +15,7 @@ exports.create = function(req, res) {
     if(err) throw err;
     
     return "Success";
-  }
+  });
 };
 
 exports.read = function(req, res) {
@@ -23,7 +23,7 @@ exports.read = function(req, res) {
     if(err) throw err;
     
     return result;
-  }
+  });
 };
 
 exports.update = function(req, res) {
@@ -31,7 +31,7 @@ exports.update = function(req, res) {
     if(err) throw err;
     
     return "Success";
-  }
+  });
 };
 
 exports.delete = function(req, res) {
@@ -39,5 +39,5 @@ exports.delete = function(req, res) {
     if(err) throw err;
     
     return "Success";
-  }
+  });
 };
