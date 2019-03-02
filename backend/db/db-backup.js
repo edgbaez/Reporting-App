@@ -19,7 +19,7 @@ if (process.env.VCAP_SERVICES) {
         host     : 'localhost',
         user     : 'root',
         password : '',
-        database : 'test',
+        database : 'test1',
         insecureAuth : true
     };
 }

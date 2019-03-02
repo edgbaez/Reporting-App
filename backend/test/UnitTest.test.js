@@ -12,7 +12,7 @@ describe('Article controller', () => {
 
 	describe('post', () => {
 		it('should return the right ', async () => {
-			let response = await request(api).post(`/create`, {"test","test","test"});
+			let response = await request(api).post(`/create`, {title:"test",location:"test",description:"test"});
 			expect(response).to.have.status(200);
 		});
 	});

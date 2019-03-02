@@ -1,8 +1,8 @@
 import React, {Component} from "react";
-import {Button, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
+import {Button, FormGroup, FormControl } from "react-bootstrap";
 import {connect} from "react-redux";
 import {Link} from "react-router-dom";
-import {postReport} from "../actions";
+import {createData} from "../actions";
 
 class ReportPage extends Component {
 constructor(props) {
@@ -33,7 +33,7 @@ validateForm() {
     const { title, location, description } = this.state;
     console.log('submit: ', title, location, description);
 
-    postReport(title, location, description, () => this.props.history.push("/dashboard"));
+    createData(title, location, description, () => this.props.history.push("/dashboard"));
   }
   render() {
     return (
@@ -43,7 +43,7 @@ validateForm() {
       <div className="col-md-6 col-md-offset-3">
         <form onSubmit={this.handleSubmit}>
           <FormGroup className="form-horizontal" controlId="title" bsSize="large">
-            <ControlLabel>Title</ControlLabel>
+            <div>Title</div>
             <FormControl
               autoFocus
               type="title"
@@ -52,7 +52,7 @@ validateForm() {
             />
           </FormGroup>
           <FormGroup controlId="location" bsSize="large">
-            <ControlLabel>Location</ControlLabel>
+            <div>Location</div>
             <FormControl
               value={this.state.location}
               onChange={this.handleChange}
@@ -60,7 +60,7 @@ validateForm() {
             />
           </FormGroup>
           <FormGroup controlId="description" bsSize="large">
-            <ControlLabel>Description</ControlLabel>
+            <div>Description</div>
             <FormControl
               value={this.state.description}
               onChange={this.handleChange}
@@ -83,4 +83,4 @@ validateForm() {
   }
 }
 
-export default connect(null, { postReport })(ReportPage);
+export default connect(null, { createData })(ReportPage);

@@ -1,8 +1,8 @@
 import React, {Component} from "react";
-import {Button, FormGroup, FormControl, ControlLabel, Panel, ListGroup, ListGroupItem } from "react-bootstrap";
+import {Button, FormGroup, FormControl, ListGroup, ListGroupItem } from "react-bootstrap";
 import { connect } from 'react-redux';
 
-import { fetchReports } from '../actions';
+import { readData } from '../actions';
 import Card from '../components/Card';
 import { isNumber } from "util";
 
@@ -20,20 +20,21 @@ class DashboardPage extends Component {
   }
 
   componentDidMount() {
+
     const { fetchReports, report } = this.props;
     if(report !== undefined) {
       this.setState({ loading: true });
-      fetchReports({ page, yourLocation },
+      readData({location: this.state.yourLocation},
         () => this.setState({ loading: false, page: this.state.page++ })
       );
     }
   }
   componentWillReceiveProps(nextProps) {
     console.log('reveive props: ', nextProps);
-    const { fetchReports, report } = nextProps;
+    const { readData, report } = nextProps;
     if(report === undefined) {
       this.setState({ loading: true });
-      fetchReports({ page, yourLocation },
+      readData({ location: this.state.yourLocation },
         () => this.setState({ loading: false })
       );
     }
@@ -51,18 +52,18 @@ class DashboardPage extends Component {
     } else {
       if(report !== undefined) {
         return (
-            <Panel className="schedule__container">
-              <Panel.Heading className="schedule-heading__container">
+            <div className="container">
+              <div className="heading__container">
                 Reports
-              </Panel.Heading>
-              <Panel.Body className="schedule-body__container">
-                {numbers.map( => {
+              </div>
+              <div className="body__container">
+                {numbers.map((digit,index) => {
                   return (
-                    <Card title={title} location={location} description={description} />
+                    <Card title={report[digit].title} location={report[digit].location} description={report[digit].description} />
                   );
-                )}
-              </Panel.Body>
-          </Panel>
+                  })}
+              </div>
+          </div>
         );
      } else {
        return (
@@ -101,14 +102,14 @@ class DashboardPage extends Component {
       );
     } else {
       return (
-        <Panel className="preference__container">
-          <Panel.Heading className="preference-heading__container">
+        <div className="preference__container">
+          <div className="preference-heading__container">
             Location
-          </Panel.Heading>
-          <Panel.Body className="preference-body__container">
+          </div>
+          <div className="preference-body__container">
             <form onSubmit={this.onSubmit}>
                 <FormGroup controlId="yourLocation" bsSize="large">
-                  <ControlLabel>What location do you want to see?</ControlLabel>
+                  <div>What location do you want to see?</div>
                   <FormControl
                     value={this.state.yourLocation}
                     onChange={this.handleChange}
@@ -124,8 +125,8 @@ class DashboardPage extends Component {
                   Submit
                 </Button>
               </form>
-          </Panel.Body>
-        </Panel>
+          </div>
+        </div>
       );
     }
   }
@@ -133,17 +134,13 @@ class DashboardPage extends Component {
     const { report } = this.props;
     return (
       <div className="dashboard__container">
-        <Panel className="profile__container">
-          <Panel.Body className="profile-body__container">Panel content</Panel.Body>
-        </Panel>
+        <div className="profile__container">
+          <div className="profile-body__container">div content</div>
+        </div>
         {report !== undefined ? this.renderReport() : this.renderForm() }
       </div>
     );
   }
 }
-const mapStateToProps = ({ report }) => {
-  return { 
-    report: report.report
-  };
-};
-export default connect(mapStateToProps, { fetchReports })(DashboardPage);
+
+export default connect(null, { readData })(DashboardPage);

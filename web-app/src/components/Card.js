@@ -1,38 +1,27 @@
 import React, { Component } from 'react';
-import { Panel, ListGroup, ListGroupItem } from 'react-bootstrap';
+import { ListGroup, ListGroupItem } from 'react-bootstrap';
 
 class Card extends Component {
     render() {
         const { title, location, description } = this.props;
         return (
-            <Panel className="container">
-                <Panel.Heading>
+            <div className="container">
+                <div>
                   {`${title}`}
-                </Panel.Heading>
-                <Panel.Body className="body__container">
-                    <ListGroup>
-                        {
-                            meals.map((meal) => {
+                </div>
+                <div className="body__container">
                                 return (
-                                    <ListGroupItem key={meal._id}>
-                                        <div className="meal-item">
-                                            <div className="meal-center">
-                                                <img src={meal.image} className="food-img" />
+                                        <div className="event-item">
+                                            <div className="event-center">
+                                                {`${location}`}
                                             </div>
-                                            <div className="meal-center">
-                                                {meal.label}
-                                            </div>
-                                            <div onClick={() => window.open(meal.url)} className="meal-item-button">
-                                                <i className="fas fa-external-link-alt" />
+                                            <div className="event-description">
+                                                {`${description}`}
                                             </div>
                                         </div>
-                                    </ListGroupItem>
                                 );
-                            })
-                        }
-                    </ListGroup>
-                </Panel.Body>
-            </Panel>
+                </div>
+            </div>
         );
     }
 }

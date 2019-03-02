@@ -29,4 +29,4 @@ class NavBar extends Component {
     }
 }
 
-export default connect(mapStateToProps)(NavBar);
+export default connect(null)(NavBar);
