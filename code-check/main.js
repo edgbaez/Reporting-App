@@ -3,6 +3,8 @@ var cron = require('node-cron');
 var connectionInfo = require('../db/db.js');
 var connection = mysql.createConnection(connectionInfo);
 
+const words =["rape", "attacked", "followed"];
+
 //sunday
 cron.schedule('5 8 * * 0', () => {
   console.log('running a task every week');
@@ -14,7 +16,7 @@ cron.schedule('5 8 * * 0', () => {
    for(var i =0; i<result.length; i++){
     
    }
-  }
+  });
 });
  
  function search(title,location,description){

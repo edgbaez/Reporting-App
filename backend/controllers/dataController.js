@@ -1,43 +1,42 @@
-var connectionInfo = require('../db/db.js');
-var mysql      = require('mysql');
-var connection = mysql.createConnection(connectionInfo);
-
 exports.list_all = function(req, res) {
-  connection.query('SELECT * FROM events;', function(err,result){
-    if(err) throw err;
-    
-    return result;
+  project.find({}, function(err, data) {
+    if (err)
+      res.send(err);
+    res.json(data);
   });
 };
 
 exports.create = function(req, res) {
-   connection.query(`INSERT INTO events (title, location, description) VALUES ($req.title, $req.location, $req.description);`, function(err,result){
-    if(err) throw err;
-    
-    return "Success";
+  var new_project = new project(req.body);
+  new_project.save(function(err, data) {
+    if (err)
+      res.send(err);
+    res.json(data);
   });
 };
 
 exports.read = function(req, res) {
-   connection.query(`Select * FROM events WHERE location=$req.location`, function(err,result){
-    if(err) throw err;
-    
-    return result;
+    project.findById(req.params.Id, function(err, data) {
+    if (err)
+      res.send(err);
+    res.json(data);
   });
 };
 
 exports.update = function(req, res) {
-   connection.query(`UPDATE events SET location=$req.location, description=$req.description WHERE title=$req.title;`, function(err,result){
-    if(err) throw err;
-    
-    return "Success";
+    project.findOneAndUpdate({_id: req.params.Id}, req.body, {new: true}, function(err, data) {
+    if (err)
+      res.send(err);
+    res.json(data);
   });
 };
 
 exports.delete = function(req, res) {
-    connection.query(`DELETE FROM events WHERE title=$req.title;`, function(err,result){
-    if(err) throw err;
-    
-    return "Success";
+    project.remove({
+    _id: req.params.Id
+  }, function(err, data) {
+    if (err)
+      res.send(err);
+    res.json({ message: 'Successfully deleted' });
   });
 };
