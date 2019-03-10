@@ -1,5 +1,8 @@
 var cron = require('node-cron');
- 
+var MongoClient = require('mongodb').MongoClient;
+var url = "mongodb://localhost:27017/mydb";
+
+
 var connectionInfo = require('../db/db.js');
 var connection = mysql.createConnection(connectionInfo);
 
@@ -8,14 +11,14 @@ const words =["rape", "attacked", "followed"];
 //sunday
 cron.schedule('5 8 * * 0', () => {
   console.log('running a task every week');
-  connection.query(`Select * FROM events WHERE location=$req.location`, function(err,result){
-    if(err) throw err;
-    
-    // read through data and look for key words
-   
-   for(var i =0; i<result.length; i++){
-    
-   }
+ 
+MongoClient.connect(url, function(err, db) {
+  if (err) throw err;
+  var dbo = db.db("mydb");
+  dbo.createCollection("events", function(err, res) {
+    if (err) throw err;
+    console.log("Collection created!");
+    db.close();
   });
 });
  
