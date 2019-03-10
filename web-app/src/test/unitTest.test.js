@@ -10,7 +10,8 @@ import NavBar from '../components/NavBar.js';
 import {createData , readAllData, readData, updateData, deleteData} from "../actions";
 
 import {shallow} from 'enzyme';
-
+import Adapter from 'enzyme-adapter-react-15';
+Enzyme.configure({ adapter: new Adapter() });
 describe("Testing page rendering", function(){
 
   it('renders DashboardPage without crashing', () => {
@@ -21,7 +22,7 @@ describe("Testing page rendering", function(){
     shallow(<ReportPage />);
   });
     
-}
+});
      
 describe("Testing components rendering", function(){
 
@@ -33,11 +34,7 @@ describe("Testing components rendering", function(){
     shallow(<Footer />);
   });
     
-  it('renders NavBar without crashing', () => {
-    shallow(<NavBar />);
-  }); 
-    
-}
+});
      
 describe("Testing actions rendering", function(){
 
@@ -47,4 +44,4 @@ describe("Testing actions rendering", function(){
   it('report reading', () => {
   });
     
-}
+});
