@@ -18,11 +18,19 @@ class Reporting {
   
   async readAllReports(){
   try{
-  const { data } = await axios.get(this.path); 
+  const { data } = await axios.get(`${this.path}/readAll`); 
   }
   cathch(e){
   throw e;
   }
+  }
+  async readReports(args){
+  try {
+      const res = await axios.post(`${this.path}/read`, { ...args });
+      return res;
+    } catch (e) {
+      throw e;
+    }
   }
   async createReport(args) {
     try {
