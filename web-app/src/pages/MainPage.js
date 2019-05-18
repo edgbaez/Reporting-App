@@ -104,7 +104,7 @@ class DashboardPage extends Component {
       return (
         <div className="preference__container">
           <div className="preference-heading__container">
-            Location
+            {/* Location */}
           </div>
           <div className="preference-body__container">
             <form onSubmit={this.onSubmit}>
@@ -135,7 +135,7 @@ class DashboardPage extends Component {
     return (
       <div className="dashboard__container">
         <div className="profile__container">
-          <div className="profile-body__container">div content</div>
+          <div className="profile-body__container"></div>
         </div>
         {report !== undefined ? this.renderReport() : this.renderForm() }
       </div>

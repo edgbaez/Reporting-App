@@ -9,6 +9,8 @@ import {connect} from "react-redux";
 
 import DashboardPage from "./pages/MainPage";
 import ReportPage from "./pages/ReportPage";
+import ClassifierPage from "./pages/ClassifierPage";
+
 
 import NavBar from './components/NavBar';
 import Footer from './components/Footer';
@@ -19,16 +21,19 @@ class App extends Component {
 
   render() {
     return (
-        <div className="container">
+        <div style={{ height: '100vh' }}>
+        <NavBar/>
           <Router>
-            <div style={{ marginTop: '7rem' }}>
-                <NavBar />
+            <div class='container' style={{ marginBottom: '7rem' }}>
                 <Route path="/" exact component={DashboardPage} />
                 <Route path="/dashboard" exact component={DashboardPage} />
                 <Route path="/report" exact component={ReportPage} />
-                <Footer/>
+                <Route path="/classify" exact component={ClassifierPage} />
             </div>
           </Router> 
+          <div>
+            <Footer/>
+          </div>
         </div>
     );
   }

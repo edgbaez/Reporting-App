@@ -1,5 +1,6 @@
 import React, {Component} from "react";
 import {Button, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
+import { relative } from "path";
 
 class Footer extends Component {
   render() {
@@ -18,7 +19,11 @@ const styles = {
   footerStyle: {
     padding: "10px",
     color: 'white',
-    background: "grey"
+    background: "grey",
+    position: 'absolute',
+    left: '0',
+    width: '100%',
+    bottom: '0'
     
   }
 };

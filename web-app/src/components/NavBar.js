@@ -1,32 +1,27 @@
-import React, { Component } from 'react';
-import { Navbar, NavItem, Nav } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
-import { connect } from 'react-redux';
+import React, { Component } from 'react'
+import { Navbar, NavItem, Nav, NavDropdown, Form, FormControl, Button} from 'react-bootstrap'
+import { Link } from 'react-router-dom'
+import { connect } from 'react-redux'
 
 class NavBar extends Component {
-    render() {
-        const { user } = this.props;
-        return (
-            <nav className="navbar navbar-inverse bg-inverse navbar-fixed-top">
-                <div className="container">
-                    <div className="navbar-header">
-                        <Link to="/" className="navbar-brand">
-                            <strong>
-                                <img className="logo" align="left" src="./images/logo_2.png" alt="react-logo"/>
-                                FTB
-                            </strong>
-                        </Link>
-                        <button type="button" className="navbar-toggle collapsed" data-toggle="collapse" data-target="#collapsible" aria-expanded="false">
-                            <span className="sr-only">Toggle navigation</span>
-                            <span className="icon-bar"></span>
-                            <span className="icon-bar"></span>
-                            <span className="icon-bar"></span>
-                        </button>
-                    </div>
-                </div>
-            </nav>
-        );
-    }
+  render () {
+    const { user } = this.props
+    return (
+      <div>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />     
+        <Navbar bg="light" expand="lg">
+          <Navbar.Brand href="#home">Anonymous Reports</Navbar.Brand>
+          <Navbar id="basic-navbar-nav">
+            <Nav className="mr-auto">
+              <Nav.Link href="/">Home</Nav.Link>
+              <Nav.Link href="/classify">Classify</Nav.Link>
+            </Nav>
+          </Navbar>
+
+        </Navbar>
+      </div>
+    )
+  }
 }
 
-export default connect(null)(NavBar);
+export default connect(null)(NavBar)
