@@ -1,3 +1,5 @@
+const dataSorting = require('data-sorting');
+
 exports.list_all = function(req, res) {
   project.find({}, function(err, data) {
     if (err)
@@ -19,7 +21,9 @@ exports.read = function(req, res) {
     project.findById(req.params.Id, function(err, data) {
     if (err)
       res.send(err);
-    res.json(data);
+      # fix this
+    var prediction = dataSorting(project);
+    res.json(data, prediction);
   });
 };
 
