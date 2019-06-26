@@ -1,3 +1,5 @@
+const dataSorting = require("data-sorting");
+
 exports.list_all = function(req, res) {
   project.find({}, function(err, data) {
     if (err)
@@ -13,6 +15,10 @@ exports.create = function(req, res) {
       res.send(err);
     res.json(data);
   });
+};
+
+exports.predict = function(req, res) {
+  dataSorting(db,db-config);
 };
 
 exports.read = function(req, res) {
