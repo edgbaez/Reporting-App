@@ -5,7 +5,10 @@ var dataList = require('../controllers/dataController');
 
 app.route('/create')
     .post(dataList.create);
-
+    
+app.route('/predict')
+    .post(dataList.predict);
+    
 app.route('/readAll')
     .get(dataList.list_all);
 
