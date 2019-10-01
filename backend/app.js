@@ -21,7 +21,11 @@ app.use(function(req, res, next) {
     next();
   });
 mongoose.Promise = global.Promise;
+mongoose.set('useFindAndModify', false);
+mongoose.set('useCreateIndex', true);
+mongoose.set('useUnifiedTopology', true);
 mongoose.connect(process.env.MONGO_CONFIG||'mongodb://localhost/Test', {useNewUrlParser: true});
+
 const db = mongoose.connection
     .once('open', () => console.log('Connected to MongoDB'))
     .on('error', error => console.warn('Warning: ', error));

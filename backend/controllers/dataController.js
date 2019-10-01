@@ -10,7 +10,6 @@ exports.list_all = function(req, res) {
 
 exports.create = function(req, res) {
   var new_Data = new Data(req.body);
-  console.log("HIT")
   new_Data.save(function(err, data) {
     if (err)
       res.send(err);
