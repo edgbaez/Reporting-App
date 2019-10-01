@@ -10,7 +10,7 @@ import {connect} from "react-redux";
 import DashboardPage from "./pages/MainPage";
 import ReportPage from "./pages/ReportPage";
 import ClassifierPage from "./pages/ClassifierPage";
-
+import SuccessPage from "./pages/successPage";
 
 import NavBar from './components/NavBar';
 import Footer from './components/Footer';
@@ -29,6 +29,7 @@ class App extends Component {
                 <Route path="/dashboard" exact component={DashboardPage} />
                 <Route path="/report" exact component={ReportPage} />
                 <Route path="/classify" exact component={ClassifierPage} />
+                <Route path="/success" exact component={SuccessPage} />
             </div>
           </Router> 
           <div>

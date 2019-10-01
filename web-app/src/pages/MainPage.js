@@ -1,90 +1,62 @@
 import React, {Component} from "react";
 import {Button, FormGroup, FormControl, ListGroup, ListGroupItem } from "react-bootstrap";
 import { connect } from 'react-redux';
-
 import { readData } from '../actions';
 import Card from '../components/Card';
-import { isNumber } from "util";
+import Columns from 'react-columns';
 
-const numbers = ['1','2','3','4', '5', '6', '7', '8', '9', '10'];
-
+// show reports
 class DashboardPage extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      loading: false,
       yourLocation: "",
-      page: 1
+      page: 1,
+      loaded: false
     };
   }
 
-  componentDidMount() {
-
-    const { fetchReports, report } = this.props;
-    if(report !== undefined) {
-      this.setState({ loading: true });
-      readData({location: this.state.yourLocation},
-        () => this.setState({ loading: false, page: this.state.page++ })
-      );
-    }
-  }
-  componentWillReceiveProps(nextProps) {
-    console.log('reveive props: ', nextProps);
-    const { readData, report } = nextProps;
-    if(report === undefined) {
-      this.setState({ loading: true });
-      readData({ location: this.state.yourLocation },
-        () => this.setState({ loading: false })
-      );
-    }
+  handleSubmit = event => {
+    event.preventDefault();
+    const { loginUser, history } = this.props;
+    const { yourLocation, page } = this.state;
+    var query = {
+      yourLocation: this.yourLocation,
+      page: this.page
+    };
+    readData({query},
+      () => this.setState({ loading: true })
+    );
   }
 
-  renderReport = () => {
-    const { report } = this.props;
-    const { loading } = this.state;
-    if(loading) {
-      return (
-        <div>
-          ...loading
-        </div>
-      );
-    } else {
-      if(report !== undefined) {
-        return (
-            <div className="container">
-              <div className="heading__container">
-                Reports
-              </div>
-              <div className="body__container">
-                {numbers.map((digit,index) => {
-                  return (
-                    <Card title={report[digit].title} location={report[digit].location} description={report[digit].description} />
-                  );
-                  })}
-              </div>
-          </div>
-        );
-     } else {
-       return (
-         <div>
-           No Reports :D
-         </div>
-       );
-     }
+  componentDidUpdate() {
+    console.log(this.props);
     }
+  // handle refresh
+  handleRefresh(time){
+        this.intervalID = setInterval(this.readData.bind(this), time*1000);
+  }
+  renderList() {
+    const list = this.props.searchQuery; 
+  
+    const updatedList = list.map((listItems)=>{ 
+        return( 
+          <div>
+          <div class="dividerLine"></div>
+                <Card title = {listItems.title} location = {listItems.location} description={listItems.description}/>
+                </div>
+            );  
+    }); 
+    return( 
+      <ul>
+      {updatedList}</ul> 
+  ); 
   }
   
   validateForm() {
     return this.state.yourLocation.length > 1;
   }
-  
-  onSubmit = e => {
-    e.preventDefault();
-    const { yourLocation } = this.state;
-    this.setState({ loading: true });
-    this.setState({ loading: false });
-  };
   
   handleChange = event => {
     this.setState({
@@ -93,16 +65,10 @@ class DashboardPage extends Component {
   }
 
   renderForm = () => {
-    const { loading } = this.state;
-    if(loading) {
+    var {loaded} = this.state;
+
       return (
-        <div>
-          ...loading
-        </div>
-      );
-    } else {
-      return (
-        <div className="preference__container">
+        <div className={styles.center}>
           <div className="preference-heading__container">
             {/* Location */}
           </div>
@@ -126,21 +92,38 @@ class DashboardPage extends Component {
                 </Button>
               </form>
           </div>
+          <div className="Results">
+    {loaded && this.renderList()}
+    </div>
         </div>
       );
-    }
+    
   }
   render() {
-    const { report } = this.props;
     return (
       <div className="dashboard__container">
         <div className="profile__container">
           <div className="profile-body__container"></div>
         </div>
-        {report !== undefined ? this.renderReport() : this.renderForm() }
+        {this.renderForm() }
       </div>
     );
   }
 }
 
-export default connect(null, { readData })(DashboardPage);
+const styles = {
+  center: {
+    marginLeft: "auto",
+    marginRight: "auto",
+    minHeight: "200px"
+  }
+}
+
+const mapStateToProps = state => {
+  return { 
+    searchQuery: state.query
+  };
+};
+
+
+export default connect(mapStateToProps, { readData })(DashboardPage);

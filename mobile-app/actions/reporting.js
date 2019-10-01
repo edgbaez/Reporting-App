@@ -20,7 +20,7 @@ class Reporting {
   try{
   const { data } = await axios.get(`${this.path}/readAll`); 
   }
-  cathch(e){
+  catch(e){
   throw e;
   }
   }

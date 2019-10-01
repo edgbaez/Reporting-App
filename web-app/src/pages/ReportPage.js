@@ -33,7 +33,8 @@ validateForm() {
     const { title, location, description } = this.state;
     console.log('submit: ', title, location, description);
 
-    createData(title, location, description, () => this.props.history.push("/dashboard"));
+    this.props.createData(title, location, description, () => this.props.history.push("/"));
+    this.props.history.push("/success")
   }
   render() {
     return (

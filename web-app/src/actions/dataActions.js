@@ -2,7 +2,9 @@ import axios from 'axios';
 
 export const createData = (title, location, description, callback) => async () =>{
     try{
+        console.log("GOODBYE")
         const res = await axios.post('/create', {title,location,description});
+        console.log('HELLO');
         callback();
     }
     catch(err){
@@ -10,9 +12,13 @@ export const createData = (title, location, description, callback) => async () =
     }
 };
 
-export const readAllData = (callback) => async () =>{
+export const readAllData = (callback) => async (dispatch) =>{
     try{
         const res = await axios.get(`/readAll`);
+        dispatch({
+            type: 'ALLFILES',
+            payload: res.body
+        });
         callback();
     }
     catch(err){
@@ -20,9 +26,13 @@ export const readAllData = (callback) => async () =>{
     }
 };
 
-export const readData = (location, callback) => async () =>{
+export const readData = (location, callback) => async (dispatch) =>{
     try{
         const res = await axios.get(`/read/${location}`);
+        dispatch({
+            type: 'ALLFILES',
+            payload: res.body
+        });
         callback();
     }
     catch(err){

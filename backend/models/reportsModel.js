@@ -2,7 +2,6 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-
 var DataSchema = new Schema({
   title: {
     type: String,
@@ -19,10 +18,6 @@ var DataSchema = new Schema({
   date: {
     type: Date,
     default: Date.now
-  },
-  priority: {
-    type: Number,
-    required: '0-10 from low to high priority'
   }
 });
 

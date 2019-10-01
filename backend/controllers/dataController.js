@@ -1,7 +1,7 @@
 const dataSorting = require("data-sorting");
-
+const Data = require("../models/reportsModel")
 exports.list_all = function(req, res) {
-  project.find({}, function(err, data) {
+  Data.find({}, function(err, data) {
     if (err)
       res.send(err);
     res.json(data);
@@ -9,8 +9,9 @@ exports.list_all = function(req, res) {
 };
 
 exports.create = function(req, res) {
-  var new_project = new project(req.body);
-  new_project.save(function(err, data) {
+  var new_Data = new Data(req.body);
+  console.log("HIT")
+  new_Data.save(function(err, data) {
     if (err)
       res.send(err);
     res.json(data);
@@ -22,7 +23,7 @@ exports.predict = function(req, res) {
 };
 
 exports.read = function(req, res) {
-    project.findById(req.params.Id, function(err, data) {
+    Data.findById(req.params.Id, function(err, data) {
     if (err)
       res.send(err);
     res.json(data);
@@ -30,7 +31,7 @@ exports.read = function(req, res) {
 };
 
 exports.update = function(req, res) {
-    project.findOneAndUpdate({_id: req.params.Id}, req.body, {new: true}, function(err, data) {
+    Data.findOneAndUpdate({_id: req.params.Id}, req.body, {new: true}, function(err, data) {
     if (err)
       res.send(err);
     res.json(data);
@@ -38,7 +39,7 @@ exports.update = function(req, res) {
 };
 
 exports.delete = function(req, res) {
-    project.remove({
+    Data.remove({
     _id: req.params.Id
   }, function(err, data) {
     if (err)
