@@ -1,112 +1,51 @@
-Reporting App
+## Creeper Reports
 
-description:
-    - An online and mobile app to report low priority incidents where nothing happened but potentially could have happened/ something happened and you don't want to tell the police. This will organize data and sort it by severity of the situation. The incidents will be reported anonymously and will be clumped together for similar cases. Cases of extreme nature will be passed to police. 
+Overview: 
 
-Front-end web: react
-Front-end mobile: react native
-Back-end: Node.js
-Code-Check: Node.js (maybe replaced by python)
+A reporting app for crimes and crime-like occurances that have happened around the your area. Users will anonymously write about the incident and the information will be used to create a danger rating for the area, as well as a description of possible assailents and links to each crime. This app is to track crimes early before reaching escalation as well as assist local police in catching criminals. AI will be used on top the data put into the system that will seek out similar events and string them together, to track criminals.  
 
-Front-end: Accepts events through forms and sends them to back-end. It will also show all events that have happened or sort through events by location.
+Use:
+1. run app
+2. Collect information
+3. Create areas danger rating
+4. Display area events and danger rating
+5. Create possible patterns in events
+6. Strong patterns are to be collected and displayed on their on page
 
-Back-end: Saves events to mysql db and reads db.
+Options
+1. Send to police
+2. Viewing area of key information
 
-Code-Check: Sorts through db for events that are similar to each other in order to bring more awareness to a common occurance. 
+Operations:
+- Website: 
+    - Main Page contains a search bar that accepts your location. This page will then display all events. (This part will require pagination)
+    - Reporting page will contain a form that will be sent to the backend to be stored in the database
+    - Linked crimes page will present possible patterns recognized by the AI. 
+    - contact page
+    
+- Create danger rating: Backend function that will take all data from the database and then create an index. This will chunk the data by location, then create an expected danger rating. 
+- Area Events: backend function that sends back events based on location
+- Check Pattern: Scan all data for similar events to track crime
 
-USE CASES:
+Testing:
+    Unit Test:
+        - Submit a event
+        - store events
+        - fetch events
+        - create index
+        - create danger rating
+        - store danger ratings
+        - update danger ratings
+        - fetch danger rating
+        - create pattern
+        - fetch pattern
+        - update pattern
+        - store pattern
 
-- where to host?
-- pipelines?
-- how much will this cost?
-
-- create TDD test cases for all sections
-
-DB Scheme:
-
-Web App:
-(go through logic of front end)
-- front end: 
-    - components
-        - fix card
+    Integration Test:
+        - submit a report
+        - load a location
+        - see the danger rating for a location
+        - see a pattern
         
-    - react:
-        - Functionality:
-            - Test cases ( creating, updating, archive, reading )
-
-- back end:
-    - node js:
-
-        - database:
-            - 3 instances of dbs ( main, backup, old )
-
-            - model:
-                - Tables:
-                    - Reports:
-                        - title
-                        - location
-                        - description
-                    - Archived: ( situations that are 6 months old without new updates/new reports will be moved to lower priority db)
-                        - title
-                        - location
-                        - description
-
-Mobile App
-
-- front end
-    - react-native or android
-        - Pages:
-            - Main window for reading reports based on area ( input area )
-            - Add a report form ( What happened? Where did it happen? Description? )
-
-        - Functionality:
-            - Middleware
-            - Reducers
-            - Action listener
-            - Store
-            - Router
-            - Test cases ( creating, updating, archive, reading )
-
-- back end ( use same back end as web app):
-    - node js:
-        - Endpoints:
-
-            - create a report
-            - update a report
-            - archive a report
-            - read a report
-
-        - database:
-
-            - Mysql or Mongo ( pref Mysql to connect addresses )
-            - 3 instances of dbs ( main, backup, old )
-
-            - model:
-                - Tables:
-                    - Reports:
-                        - Id #
-                        - situation
-                        - location
-                        - description of assailant 
-                    - Archived: ( situations that are 6 months old without new updates/new reports will be moved to lower priority db)
-                        - Id #
-                        - situation
-                        - location
-                        - description of assailant
-
-AI/Scan:
-
-- Program:
-
-    - JS probably:
-        - Scan Situations for trigger words ( knife, gun, rape, groped, touched, and an expandable library)
-        - Sort situations based on similarities ( how close will these situations be? e.g. 75% similar )
-        - Contact Police if extreme / fill out report with police ( have change ticket system of person checking the situation ) (prevents DDOS)
-        - Chron job (how often should this be run? Once a week or Daily?)
-    - tasks
-        - move data
-        - archive data
-        - interpret data
-        - chunk data
-        - delete data
-        - sort by location and by importance 
+For additional information: DownRampApps@gmail.com
