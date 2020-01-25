@@ -1,8 +1,9 @@
 import React from 'react';
-import './toolbar.css';
+import './style.css';
 import DrawToggleButton from './SideDrawer/DrawerToggleButton';
 
-const toolbar = props =>{
+function Toolbar(){
+    return(
 <header className="toolbar">
     <nav className="toolbar__navigation">
         <div className="toolbar_toggle_button"><DrawToggleButton /></div>
@@ -10,5 +11,7 @@ const toolbar = props =>{
         <div className = "spacer"/>
         <div className="toolbar_navigation-items"></div>
     </nav>
-</header>
+</header>);
 }
+
+export default Toolbar;

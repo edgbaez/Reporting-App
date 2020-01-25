@@ -2,7 +2,7 @@ import React, {Component} from "react";
 import {Button, FormGroup, FormControl, ListGroup, ListGroupItem } from "react-bootstrap";
 import { connect } from 'react-redux';
 import { readData } from '../actions';
-import Card from '../components/Card';
+import Card from '../components/card';
 import Columns from 'react-columns';
 
 // show reports
