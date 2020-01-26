@@ -15,9 +15,9 @@ class AboutPage extends Component {
       <div className="container">
         <div className="title"><h1>About</h1></div>
         <div className="body"><p>
-        Hello, Welcome to Down Ramp Apps. We are a group of programs that design, create, and maintain apps.
-        If you want to buy an app or give us a suggestion go to the contact page and leave us a message. Check
-        out our other projects while you're here. 
+        Hello, Welcome to Creeper Report, an unanimous reporting app for crimes, or crime-like, situations.
+        This app will collect your events and then sort them based on location in order to warn people
+        of possible dangers in their area. 
         </p></div>
         <div className="sourcecode">
           <p>
@@ -25,7 +25,7 @@ class AboutPage extends Component {
           </p>
           <a
           className="App-link"
-          href="https://github.com/DGGomez"
+          href="https://github.com/DGGomez/Reporting-App"
           target="_blank"
           rel="noopener noreferrer"
           >Code!</a>        
@@ -33,11 +33,14 @@ class AboutPage extends Component {
         <div className="developers">
           <div className="developer-Daniel">
               <h1>
-                Hi, I'm Daniel
+                Hi, I'm Daniel. I made this App.
               </h1>
               <p>
                 Hey I'm a Ryerson Computer soon to be grad. I build web apps and mobile apps. I like Machine Learning.
-                I like building stuff and hope you guys can use some of the stuff I'm building.
+                I like building stuff and hope you guys can use some of the stuff I'm building. If you have any ideas
+                on what I can add to this app message me at downrampapps@gmail.com.
+                <br/><br/>
+                Thanks
               </p>
           </div>
         </div>

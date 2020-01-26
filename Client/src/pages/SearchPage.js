@@ -12,7 +12,8 @@ class DashboardPage extends Component {
 
     this.state = {
       yourLocation: "",
-      page: 1,
+      page: 0,
+      results: 0,
       loaded: false
     };
   }
@@ -28,8 +29,21 @@ class DashboardPage extends Component {
     readData({query},
       () => this.setState({ loading: true })
     );
-  }
 
+  }
+  nextClick() {
+    const {page, results} = this.state;
+    if(page + 20 <= results){
+      this.setState((prevState, props) => ({page: prevState.page + 20}));
+  }
+}
+  prevClick() {
+    const {page, results} = this.state;
+
+    if(page - 20 >= 0){
+      this.setState((prevState, props) => ({page: prevState.page - 20}));
+    }
+  }
   componentDidUpdate() {
     console.log(this.props);
     }
@@ -39,7 +53,7 @@ class DashboardPage extends Component {
   }
   renderList() {
     const list = this.props.searchQuery; 
-  
+    this.setState({results: list.length})
     const updatedList = list.map((listItems)=>{ 
         return( 
           <div>
@@ -49,8 +63,14 @@ class DashboardPage extends Component {
             );  
     }); 
     return( 
+      <div>
+        <div align="right">
+        <button onClick= {this.prevClick}>Previous</button>  
+        <button onClick = {this.nextClick}>Next</button>
+        </div>
       <ul>
       {updatedList}</ul> 
+      </div>
   ); 
   }
   

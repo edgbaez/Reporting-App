@@ -4,38 +4,46 @@ import React from 'react';
 function Footer(){
     return (
         <div className = "main-footer">
-            <div className="container">
+                  <footer className="text-center navbar-fixed-bottom .bg-secondary">
+
                 <div className = "row">
                     {/*column 1*/}
-                    <div className= "col-md-3 col-sm-6">
-                        <h4>info</h4>
+                    <div className= "col-sm-4">
+                        <h4>Pages</h4>
                         <ul className = "list-unstyled">
-                            <li>thing</li>
+                            <li><a href="/">Main</a></li>
+                            <li><a href="/report">Reporting</a></li>
+                            <li><a href="/contact">About Us</a></li>
+                            <li><a href="/privacy">Privacy</a></li>
+
                         </ul>
                     </div>
                     {/*column 2*/}
 
-                    <div className= "col-md-3 col-sm-6">
-                        <h4>info</h4>
+                    <div className= "col-sm-4">
+                        <h4>Contact Info</h4>
                         <ul className = "list-unstyled">
-                            <li>thing</li>
+                            <li>Email: downrampapps@gmail.com</li>
+                            <li>Address: N/A</li>
+                            <li>Phone #: N/A</li>
                         </ul>
                     </div>
                     {/*column 3*/}
 
-                    <div className= "col-md-3 col-sm-6">
-                        <h4>info</h4>
+                    <div className= "col-sm-4">
+                        <h4>Source Code and Other projects</h4>
                         <ul className = "list-unstyled">
-                            <li>thing</li>
+                            <li><a href= "https://github.com/DGGomez/Reporting-App">Github</a></li>
                         </ul>
                     </div>
                 </div>
-                <div className = "footer-bottom">
+                <div className = "footer-bottom copyright-text">
                     <p className="text-xs-center">
-                        &copy;{new Date().getFullYear()} The App - All Rights Reserved
+                        &copy;{new Date().getFullYear()} Creeper Report - All Rights Reserved
                     </p>
                 </div>    
-            </div>
+                </footer>
+
         </div>
     );
 }

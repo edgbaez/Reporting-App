@@ -125,7 +125,7 @@ body{
     top: 0;
     left: 0;
     width: 100%;
-    background: #521751;
+    background: #173352;
     height: 56px;
 }
 
@@ -208,7 +208,7 @@ body{
 .container input {
 	width: 100%;
 	padding: 16px;
-	font-size: 36px;
+	font-size: 20px;
 	font-style: italic;
 	color: #444;
 	box-sizing: border-box;
@@ -300,4 +300,40 @@ body{
 .greyed-out {
 	background: #f1f1f1;
 	opacity: 0.5;
+}
+
+footer{
+    background: #173352;
+}
+
+.col-sm-4 a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.1rem;
+
+}
+
+.col-sm-4 h4 {
+    color: white;
+    text-decoration: none;
+    font-size: 1.2rem;
+
+}
+
+.col-sm-4 li {
+    color: white;
+    text-decoration: none;
+    font-size: 1.1rem;
+
+}
+
+.footer-bottom p{
+    color: white;
+    text-decoration: none;
+    font-size: 1.0rem;
+
+}
+
+.preference-body__container{
+    padding-top: 6rem;
 }

@@ -42,8 +42,9 @@ validateForm() {
       <div className="container center-block">
       <div className="row">
       <div className="col-md-6 col-md-offset-3">
+        <h1 style={{textAlign: "center"}}>Create a Report</h1>
         <form onSubmit={this.handleSubmit}>
-          <FormGroup className="form-horizontal" controlId="title" bsSize="large">
+          <FormGroup className="form-horizontal" controlId="title" bsSize="small">
             <div>Title</div>
             <FormControl
               autoFocus
@@ -52,7 +53,7 @@ validateForm() {
               onChange={this.handleChange}
             />
           </FormGroup>
-          <FormGroup controlId="location" bsSize="large">
+          <FormGroup controlId="location" bsSize="small">
             <div>Location</div>
             <FormControl
               value={this.state.location}
@@ -60,7 +61,7 @@ validateForm() {
               type="location"
             />
           </FormGroup>
-          <FormGroup controlId="description" bsSize="large">
+          <FormGroup controlId="description" bsSize="small">
             <div>Description</div>
             <FormControl
               value={this.state.description}
