@@ -74,7 +74,7 @@ validateForm() {
             disabled={!this.validateForm()}
             type="submit"
           >
-            Login
+            SUBMIT
           </Button>
         </form>
         </div>
