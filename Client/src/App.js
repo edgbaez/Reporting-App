@@ -17,6 +17,7 @@ import SideDrawer from './components/SideDrawer/SideDrawer';
 import Backdrop from './components/Backdrop/Backdrop';
 import Footer from './components/footer';
 import './App.css';
+import sideDrawer from './components/SideDrawer/SideDrawer';
 
 class App extends Component {
   state = {
@@ -27,6 +28,7 @@ class App extends Component {
     this.setState((prevState) => {
       return {sideDrawerOpen: !prevState.sideDrawerOpen};
     });
+    
   };
 
   backdropClickHandler = () => {
@@ -40,7 +42,7 @@ class App extends Component {
       backdrop = <Backdrop click={this.backdropClickHandler} />
     }
     return (
-        <div>
+        <div >
       <div style={{height: '100%'}}>
         <Toolbar drawerClickHandler={this.drawerToggleClickHandler} />
         <SideDrawer show={this.state.sideDrawerOpen} />
@@ -48,7 +50,7 @@ class App extends Component {
         
       </div>
           <Router>
-            <div class='container' style={{ marginBottom: '7rem' }}>
+            <div class='container' style={{ marginBottom: '7rem', marginTop: '64px' }}>
                 <Route path="/" exact component={SearchPage} />
                 <Route path="/dashboard" exact component={SearchPage} />
                 <Route path="/report" exact component={ReportPage} />
