@@ -28,6 +28,7 @@ Operations:
 - Check Pattern: Scan all data for similar events to track crime
 
 Testing:
+
     Unit Test:
         - Submit a event
         - store events
